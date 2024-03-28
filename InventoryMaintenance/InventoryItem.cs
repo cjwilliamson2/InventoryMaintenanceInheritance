@@ -15,6 +15,6 @@
         public string Description { get; set; } = "";
         public decimal Price { get; set; }
 
-        public string GetDisplayText() => $"{ItemNo}    {Description} ({Price:c})";
+        public virtual string GetDisplayText() => $"{ItemNo}    {Description} ({Price:c})";
     }
 }

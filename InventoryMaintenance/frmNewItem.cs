@@ -10,6 +10,8 @@ namespace InventoryMaintenance
         }
 
         private InventoryItem item = null!;
+        private Plant pitem = null!;
+        private Supply sitem = null!;
 
         public InventoryItem GetNewItem()
         {
@@ -53,11 +55,28 @@ namespace InventoryMaintenance
         {
             if (IsValidData())
             {
-                item = new(
-                    Convert.ToInt32(txtItemNo.Text),
-                    txtDescription.Text,
-                    Convert.ToDecimal(txtPrice.Text)
-                );
+                if (rdoPlant.Checked)
+                {
+                    pitem = new(
+                        Convert.ToInt32(txtItemNo.Text),
+                        txtDescription.Text,
+                        Convert.ToDecimal(txtPrice.Text),
+                        cboSizeOrManufacturer.SelectedItem.ToString()!
+                    );
+
+                    item = pitem;
+                } else
+                {
+                    sitem = new(
+                        Convert.ToInt32(txtItemNo.Text),
+                        txtDescription.Text,
+                        Convert.ToDecimal(txtPrice.Text),
+                        cboSizeOrManufacturer.SelectedItem.ToString()!
+                    );
+
+                    item = sitem;
+                }
+
                 this.Close();
             }
         }
